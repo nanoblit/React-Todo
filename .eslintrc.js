@@ -18,7 +18,6 @@ module.exports = {
   },
   plugins: ["react", "babel"],
   rules: {
-    "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": 0,
     "linebreak-style": 0,
     "react/prop-types": 0,
