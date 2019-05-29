@@ -2,8 +2,16 @@ import React from 'react';
 
 class Todo extends React.Component {
   render() {
-    const { data } = this.props;
-    return <li style={data.completed ? { textDecoration: 'line-through' } : {}}>{data.task}</li>;
+    const { data, crossOut } = this.props;
+
+    return (
+      <li
+        onClick={() => crossOut(data)}
+        style={data.completed ? { textDecoration: 'line-through' } : {}}
+      >
+        {data.task}
+      </li>
+    );
   }
 }
 

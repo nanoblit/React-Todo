@@ -22,6 +22,21 @@ class App extends React.Component {
     };
   }
 
+  crossOut = data => {
+    const { taskList } = this.state;
+    const newData = data;
+    newData.completed = !newData.completed;
+
+    this.setState({
+      taskList: taskList.map(task => {
+        if (task.id === newData.id) {
+          return newData;
+        }
+        return task;
+      }),
+    });
+  };
+
   onChangeInput = e => {
     this.setState({
       newTodo: e.target.value,
@@ -55,7 +70,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <TodoList taskList={taskList} />
+        <TodoList taskList={taskList} crossOut={this.crossOut} />
         <TodoForm
           inputValue={newTodo}
           onChangeInput={this.onChangeInput}
