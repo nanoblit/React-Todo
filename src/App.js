@@ -6,20 +6,21 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskList: [
-        {
-          task: 'Organize Garage',
-          id: 1528817077286,
-          completed: false,
-        },
-        {
-          task: 'Bake Cookies',
-          id: 1528817084358,
-          completed: false,
-        },
-      ],
+      taskList: [],
       newTodo: '',
     };
+  }
+
+  componentDidMount() {
+    const taskListFromStorage = window.localStorage.getItem('taskList');
+    if (taskListFromStorage) {
+      this.setState({ taskList: JSON.parse(taskListFromStorage) });
+    }
+  }
+
+  componentDidUpdate() {
+    const { taskList } = this.state;
+    window.localStorage.setItem('taskList', JSON.stringify(taskList));
   }
 
   crossOut = data => {
@@ -46,6 +47,8 @@ class App extends React.Component {
   onAddTodo = e => {
     e.preventDefault();
     const { newTodo } = this.state;
+
+    if (newTodo === '') return;
 
     const todo = {
       task: newTodo,
