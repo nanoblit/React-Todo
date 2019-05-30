@@ -55,7 +55,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <TodoList taskList={taskList} crossOut={crossOut} />
       <TodoForm
         inputValue={newTodo}
