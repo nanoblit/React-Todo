@@ -6,6 +6,7 @@ import TodoForm from './components/TodoComponents/TodoForm';
 const App = () => {
   const [taskList, setTaskList] = useState([]);
   const [newTodo, setNewTodo] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
     const taskListFromStorage = window.localStorage.getItem('taskList');
@@ -37,11 +38,14 @@ const App = () => {
   };
 
   const onChangeSearch = e => {
-    setTaskList(taskList.map(task => {
-      const newTask = task;
-      newTask.displayed = task.task.indexOf(e.target.value) > -1;
-      return newTask;
-    }));
+    setSearchText(e.target.value);
+    setTaskList(
+      taskList.map(task => {
+        const newTask = task;
+        newTask.displayed = task.task.indexOf(e.target.value) > -1;
+        return newTask;
+      }),
+    );
   };
 
   const onAddTodo = e => {
@@ -56,6 +60,8 @@ const App = () => {
       displayed: true,
     };
 
+    todo.displayed = todo.task.indexOf(searchText) > -1;
+
     setTaskList([...taskList, todo]);
     setNewTodo('');
   };
@@ -66,7 +72,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <SearchInput onChangeInput={onChangeSearch} />
+      <SearchInput inputValue={searchText} onChangeInput={onChangeSearch} />
       <TodoList taskList={taskList} crossOut={crossOut} />
       <TodoForm
         inputValue={newTodo}
