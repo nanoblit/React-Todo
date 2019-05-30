@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SearchInput from './components/TodoComponents/SearchInput';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
@@ -35,6 +36,14 @@ const App = () => {
     setNewTodo(e.target.value);
   };
 
+  const onChangeSearch = e => {
+    setTaskList(taskList.map(task => {
+      const newTask = task;
+      newTask.displayed = task.task.indexOf(e.target.value) > -1;
+      return newTask;
+    }));
+  };
+
   const onAddTodo = e => {
     e.preventDefault();
 
@@ -44,6 +53,7 @@ const App = () => {
       task: newTodo,
       id: Date.now(),
       completed: false,
+      displayed: true,
     };
 
     setTaskList([...taskList, todo]);
@@ -56,6 +66,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <SearchInput onChangeInput={onChangeSearch} />
       <TodoList taskList={taskList} crossOut={crossOut} />
       <TodoForm
         inputValue={newTodo}

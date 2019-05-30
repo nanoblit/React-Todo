@@ -4,6 +4,13 @@
   margin: 1rem auto;
   padding: 1rem;
 
+  .search-div {
+    input {
+      max-width: 24.9rem;
+      width: 100%;
+    }
+  }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -26,38 +33,34 @@
       flex-direction: column;
     }
 
-    input {
-      font-family: "Open Sans";
-      font-size: 2rem;
-      border: 0.2rem solid @gray;
-      border-radius: @border-radius;
-      padding: 1rem;
-      transition: border-color 0.2s;
-
-      &:hover {
-        border-color: @light-gray;
-      }
-    }
-
-    button {
-      font-family: "Open Sans";
-      font-size: 2rem;
-      border: none;
-      background-color: @gray;
-      border-radius: @border-radius;
-      padding: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: @light-gray;
-      }
-    }
-
-    input, button {
-      @media screen and (max-width: 600px) {
-        margin-bottom: 1rem;
-      }
-    }
   }
+}
+
+input {
+  border: 0.2rem solid @gray;
+  border-radius: @border-radius;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: @light-gray;
+  }
+}
+
+button {
+  border: none;
+  background-color: @gray;
+  border-radius: @border-radius;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: @light-gray;
+  }
+}
+
+input, button {
+  font-family: "Open Sans";
+  font-size: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }

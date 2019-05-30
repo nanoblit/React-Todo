@@ -3,9 +3,11 @@ import Todo from './Todo';
 
 const TodoList = ({ taskList, crossOut }) => (
   <ul>
-    {taskList.map(task => (
-      <Todo key={task.id} data={task} crossOut={crossOut} />
-    ))}
+    {taskList
+      .filter(({ displayed }) => displayed)
+      .map(task => (
+        <Todo key={task.id} data={task} crossOut={crossOut} />
+      ))}
   </ul>
 );
 
