@@ -16,7 +16,12 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem('taskList', JSON.stringify(taskList));
+    const taskListUncrossedOut = taskList.map(task => {
+      const displayedTask = task;
+      displayedTask.displayed = true;
+      return displayedTask;
+    });
+    window.localStorage.setItem('taskList', JSON.stringify(taskListUncrossedOut));
   }, [taskList]);
 
   const crossOut = data => {
