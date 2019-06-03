@@ -1,0 +1,66 @@
+.app {
+  font-size: 2rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 1rem;
+
+  .search-div {
+    input {
+      max-width: 24.9rem;
+      width: 100%;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.2rem solid @gray;
+    border-radius: @border-radius;
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    li {
+      margin: 1rem 0;
+    }
+  }
+
+  form {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
+
+  }
+}
+
+input {
+  border: 0.2rem solid @gray;
+  border-radius: @border-radius;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: @light-gray;
+  }
+}
+
+button {
+  border: none;
+  background-color: @gray;
+  border-radius: @border-radius;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: @light-gray;
+  }
+}
+
+input, button {
+  font-family: "Open Sans";
+  font-size: 2rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
